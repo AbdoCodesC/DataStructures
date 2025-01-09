@@ -42,11 +42,16 @@ class Main {
         list.insertEnd(9);
         list.insertEnd(81);
         list.insertAt(2, 1000);
-
-
         list.print();
-
-
-
+//        list.removeStart();
+//        list.print();
+//        list.removeEnd();
+//        list.removeAt(4);
+//        list.removeAt(3);
+//        list.removeAt(2);
+//        list.removeAt(1);
+//        list.removeAt(0);
+//        list.removeAt(0);
+        System.out.println(list.search(81));
     }
 }

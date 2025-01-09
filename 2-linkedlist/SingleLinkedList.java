@@ -91,6 +91,7 @@ public class SingleLinkedList {
         }
         if (head == tail) {
             head = tail = null;
+            count--;
             return;
         }
         head = head.next;
