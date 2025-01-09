@@ -35,23 +35,39 @@ class Main {
 //        list.removeAt(2);
 //        list.print();
 //        System.out.println(list.search(0)
-        DoublyLinkedList list = new DoublyLinkedList();
-        list.insertStart(100);
-        list.insertStart(15);
-        list.insertStart(0);
-        list.insertEnd(9);
-        list.insertEnd(81);
-        list.insertAt(2, 1000);
-        list.print();
-//        list.removeStart();
+//        DoublyLinkedList list = new DoublyLinkedList();
+//        list.insertStart(100);
+//        list.insertStart(15);
+//        list.insertStart(0);
+//        list.insertEnd(9);
+//        list.insertEnd(81);
+//        list.insertAt(2, 1000);
 //        list.print();
-//        list.removeEnd();
-//        list.removeAt(4);
-//        list.removeAt(3);
-//        list.removeAt(2);
-//        list.removeAt(1);
-//        list.removeAt(0);
-//        list.removeAt(0);
-        System.out.println(list.search(81));
+////        list.removeStart();
+////        list.print();
+////        list.removeEnd();
+////        list.removeAt(4);
+////        list.removeAt(3);
+////        list.removeAt(2);
+////        list.removeAt(1);
+////        list.removeAt(0);
+////        list.removeAt(0);
+//        System.out.println(list.search(81));
+
+        CircularLinkedList list = new CircularLinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.print();
+
+//        list.removeStart();
+//        list.removeStart();
+//        list.removeStart();
+        list.remove(3);
+        list.remove(1);
+        list.remove(2);
+
+//        System.out.println(list.search(22));
+        list.print();
     }
 }
