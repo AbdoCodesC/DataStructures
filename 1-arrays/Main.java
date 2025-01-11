@@ -1,5 +1,5 @@
 class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        Array arr = new Array(5);
 //        arr.insertMiddle(0, 1);
 //        arr.insertMiddle(1, 2);
@@ -54,20 +54,49 @@ class Main {
 ////        list.removeAt(0);
 //        System.out.println(list.search(81));
 
-        CircularLinkedList list = new CircularLinkedList();
-        list.insert(1);
-        list.insert(2);
-        list.insert(3);
-        list.print();
-
+//        CircularLinkedList list = new CircularLinkedList();
+//        list.insert(1);
+//        list.insert(2);
+//        list.insert(3);
+//        list.print();
+//
 //        list.removeStart();
 //        list.removeStart();
 //        list.removeStart();
-        list.remove(3);
-        list.remove(1);
-        list.remove(2);
+//        list.remove(3);
+//        list.remove(1);
+//        list.remove(2);
 
 //        System.out.println(list.search(22));
-        list.print();
+//        list.print();
+
+        Stack stack = new Stack(5);
+        System.out.println(stack);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+
+        System.out.println(stack);
+        System.out.println(stack.pop());
+        System.out.println(stack);
+        System.out.println(stack.pop());
+        System.out.println(stack);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

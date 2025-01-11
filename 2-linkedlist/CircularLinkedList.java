@@ -40,6 +40,7 @@ public class CircularLinkedList {
             return;
         }
         head = head.next;
+        tail.next = head;
         count--;
     }
 
