@@ -70,19 +70,48 @@ class Main {
 //        System.out.println(list.search(22));
 //        list.print();
 
-        Stack stack = new Stack(5);
-        System.out.println(stack);
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
+//        Stack stack = new Stack(5);
+//        System.out.println(stack);
+//        stack.push(1);
+//        stack.push(2);
+//        stack.push(3);
+//        stack.push(4);
+//        stack.push(5);
+//
+//        System.out.println(stack);
+//        System.out.println(stack.pop());
+//        System.out.println(stack);
+//        System.out.println(stack.pop());
+//        System.out.println(stack);
+//        QueueUsingTwoStack queue = new QueueUsingTwoStack();
+//        queue.enqueue(1);
+//        queue.enqueue(2);
+//        queue.enqueue(3);
+//        queue.enqueue(7);
+//        queue.enqueue(10);
+//        queue.dequeue();
 
-        System.out.println(stack);
-        System.out.println(stack.pop());
-        System.out.println(stack);
-        System.out.println(stack.pop());
-        System.out.println(stack);
+//        PriorityQueue queue = new PriorityQueue(5);
+//        queue.insert(10);
+//        queue.insert(2);
+//        queue.insert(100);
+//        queue.insert(-7);
+//        queue.insert(3);
+//        System.out.println(queue);
+//        while (!queue.isEmpty()) {
+//            System.out.println(queue.remove());
+//        }
+
+        LinkedListQueue queue = new LinkedListQueue();
+        queue.insertEnd(10);
+        queue.insertEnd(7);
+        queue.insertEnd(180);
+        queue.insertEnd(16);
+        queue.print();
+        queue.removeStart();
+        queue.print();
+
+
 
 
 
