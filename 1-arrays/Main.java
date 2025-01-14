@@ -102,14 +102,21 @@ class Main {
 //            System.out.println(queue.remove());
 //        }
 
-        LinkedListQueue queue = new LinkedListQueue();
-        queue.insertEnd(10);
-        queue.insertEnd(7);
-        queue.insertEnd(180);
-        queue.insertEnd(16);
-        queue.print();
-        queue.removeStart();
-        queue.print();
+//        LinkedListQueue queue = new LinkedListQueue();
+//        queue.insertEnd(10);
+//        queue.insertEnd(7);
+//        queue.insertEnd(180);
+//        queue.insertEnd(16);
+//        queue.print();
+//        queue.removeStart();
+//        queue.print();
+
+        HashMap map = new HashMap(5);
+        map.put(0, "Abdo");
+        map.put(1, "Sara");
+        map.put(1, "Gurr");
+        map.remove(10);
+        System.out.println(map.get(1));
 
 
 
