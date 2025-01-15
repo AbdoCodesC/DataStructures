@@ -111,28 +111,49 @@ class Main {
 //        queue.removeStart();
 //        queue.print();
 
-        HashMap map = new HashMap(5);
-        map.put(0, "Abdo");
-        map.put(1, "Sara");
-        map.put(1, "Gurr");
-        map.remove(10);
-        System.out.println(map.get(1));
+//        HashMap map = new HashMap(5);
+//        map.put(0, "Abdo");
+//        map.put(1, "Sara");
+//        map.put(1, "Gurr");
+//        map.remove(10);
+//        System.out.println(map.get(1));
+
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert(7);
+        tree.insert(4);
+        tree.insert(9);
+        tree.insert(1);
+        tree.insert(6);
+        tree.insert(8);
+        tree.insert(10);
+        tree.insert(-3);
+//        System.out.println(tree.isBST());
+//        tree.swap();
+//        System.out.println(tree.isBST());
+            System.out.println(tree.getNodesAtDist(0));
+        System.out.println(tree.levelOrder());
+
+            //        BinarySearchTree tree2 = new BinarySearchTree();
+//        tree2.insert(7);
+//        tree2.insert(4);
+//        tree2.insert(9);
+//        tree2.insert(1);
+//        tree2.insert(6);
+//        tree2.insert(8);
+//        tree2.insert(10);
+//        tree2.insert(-3);
+//        System.out.println(tree.equals(null));
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//        tree.preOrder();
+//        System.out.println();
+//        tree.inOrder();
+//        System.out.println();
+//        tree.postOrder();
+//        System.out.println();
+//        System.out.println(tree.height());
+//        System.out.println("\nDone!");
+//        System.out.println(tree.min());
     }
+
 }
