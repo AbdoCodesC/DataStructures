@@ -118,20 +118,20 @@ class Main {
 //        map.remove(10);
 //        System.out.println(map.get(1));
 
-        BinarySearchTree tree = new BinarySearchTree();
-        tree.insert(7);
-        tree.insert(4);
-        tree.insert(9);
-        tree.insert(1);
-        tree.insert(6);
-        tree.insert(8);
-        tree.insert(10);
-        tree.insert(-3);
+//        BinarySearchTree tree = new BinarySearchTree();
+//        tree.insert(7);
+//        tree.insert(4);
+//        tree.insert(9);
+//        tree.insert(1);
+//        tree.insert(6);
+//        tree.insert(8);
+//        tree.insert(10);
+//        tree.insert(-3);
 //        System.out.println(tree.isBST());
 //        tree.swap();
 //        System.out.println(tree.isBST());
-            System.out.println(tree.getNodesAtDist(0));
-        System.out.println(tree.levelOrder());
+//            System.out.println(tree.getNodesAtDist(0));
+//        System.out.println(tree.levelOrder());
 
             //        BinarySearchTree tree2 = new BinarySearchTree();
 //        tree2.insert(7);
@@ -154,6 +154,15 @@ class Main {
 //        System.out.println(tree.height());
 //        System.out.println("\nDone!");
 //        System.out.println(tree.min());
+
+        AVL tree = new AVL();
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(10);
+        tree.insert(100);
+
+        tree.inOrder();
+        System.out.println("done");
     }
 
 }
