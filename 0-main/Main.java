@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Main {
     public static void main(String[] args) throws Exception {
 //        Array arr = new Array(5);
@@ -155,14 +157,35 @@ class Main {
 //        System.out.println("\nDone!");
 //        System.out.println(tree.min());
 
-        AVL tree = new AVL();
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(10);
-        tree.insert(100);
+//        AVL tree = new AVL();
+//        tree.insert(30);
+//        tree.insert(20);
+//        tree.insert(10);
+//        tree.insert(100);
+//
+//        tree.inOrder();
+//        System.out.println("done");
 
-        tree.inOrder();
-        System.out.println("done");
+//        Heap heap = new Heap();
+//        heap.insert(10);
+//        heap.insert(0);
+//        heap.insert(100);
+//        heap.insert(30);
+//        heap.insert(19);
+//        heap.insert(199);
+//        heap.insert(10009);
+//        System.out.println(heap);
+//
+//        while (!heap.isEmpty())
+//            System.out.println(heap.remove());
+//        System.out.println(Arrays.toString(heap.heapSort(new int[] {10,0,100,30,19,200,1000})));
+
+//        int [] nums = {5,3,8,4,1,2};
+//        MaxHeap.heapify(nums);
+//        System.out.println(Arrays.toString(nums));
+
+        int [] nums = {5,3,8,4,1,2};
+        System.out.println(MaxHeap.kthLargestItem(nums, 5));
     }
 
 }
