@@ -184,8 +184,17 @@ class Main {
 //        MaxHeap.heapify(nums);
 //        System.out.println(Arrays.toString(nums));
 
-        int [] nums = {5,3,8,4,1,2};
-        System.out.println(MaxHeap.kthLargestItem(nums, 5));
+//        int [] nums = {5,3,8,4,1,2};
+//        System.out.println(MaxHeap.kthLargestItem(nums, 5));
+
+        Tries trie = new Tries();
+        trie.insert("car");
+        trie.insert("care");
+        trie.insert("card");
+        trie.insert("careful");
+        System.out.println(trie.findWords(null));
+//        trie.preOrder();
+
     }
 
 }
