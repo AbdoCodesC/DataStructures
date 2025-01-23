@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 class Main {
     public static void main(String[] args) throws Exception {
 //        Array arr = new Array(5);
@@ -187,13 +185,28 @@ class Main {
 //        int [] nums = {5,3,8,4,1,2};
 //        System.out.println(MaxHeap.kthLargestItem(nums, 5));
 
-        Tries trie = new Tries();
-        trie.insert("car");
-        trie.insert("care");
-        trie.insert("card");
-        trie.insert("careful");
-        System.out.println(trie.findWords(null));
-//        trie.preOrder();
+//        Tries trie = new Tries();
+//        trie.insert("car");
+//        trie.insert("care");
+//        trie.insert("card");
+//        trie.insert("careful");
+//        System.out.println(trie.findWords(null));
+////        trie.preOrder();
+        DirectedGraph g = new DirectedGraph();
+        g.addNode("A");
+        g.addNode("B");
+        g.addNode("C");
+
+        g.addEdge("A", "B");
+        g.addEdge("B", "C");
+        g.addEdge("C", "A");
+//        g.addEdge("A", "P");
+        System.out.println(g.hasCycle());
+//        g.dfs("Z");
+//        g.dfsIter("A");
+//        System.out.println();
+//        g.bfsIter("D");
+
 
     }
 

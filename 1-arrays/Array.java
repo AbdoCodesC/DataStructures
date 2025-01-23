@@ -1,4 +1,8 @@
 /*
+  Ram - byte -> 8 bits
+  int 4byte
+  char 1byte
+
   Lookup O(1)
   Insert O(n)
   Remove O(n)
