@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 public class CircularLinkedList {
     private int count;
-    private class Node {
+    private static class Node {
         int data;
         Node next;
         public Node(int data){
@@ -19,16 +19,15 @@ public class CircularLinkedList {
     private Node head;
     private Node tail;
 
-    public void insert (int data) {
+    public void insertStart (int data) {
         Node node = new Node(data);
         if (head == null) {
             head = tail = node;
-            count++;
-            return;
+        } else {
+            node.next = head;
+            head = node;
+            tail.next = head;
         }
-        node.next = head;
-        head = node;
-        tail.next = head;
         count++;
     }
 
@@ -78,6 +77,14 @@ public class CircularLinkedList {
             curr = curr.next;
         }
         System.out.println();
+    }
+
+    public static void main(String[] args) {
+        CircularLinkedList cll = new CircularLinkedList();
+        cll.insertStart(10);
+        cll.insertStart(1);
+        cll.insertStart(9);
+        cll.print();
     }
 
 }

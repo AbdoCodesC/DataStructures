@@ -10,7 +10,7 @@ public class LinkedListQueue {
     private Node head;
     private Node tail;
 
-    private class Node {
+    private static class Node {
         Node next;
         int data;
         public Node (int data) {

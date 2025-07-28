@@ -1,14 +1,15 @@
 /*
-    Directed {one way} and Undirected {both way}
+    Directed {one way} and Undirected {both ways}
     Weighted and Unweighted
     Cyclic and Acyclic
-
  */
 
 import java.util.*;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Stack;
+
+import org.w3c.dom.Node;
 
 public class DirectedGraph {
 
@@ -52,8 +53,6 @@ public class DirectedGraph {
         nodes.remove(label);
     }
 
-
-
     public void removeEdge (String from, String to) {
         Node fromNode = nodes.get(from);
         Node toNode = nodes.get(to);
@@ -78,7 +77,7 @@ public class DirectedGraph {
     }
 
     public void dfs (Node root, HashSet <Node> visited) {
-        System.out.print(root+" > ");
+        System.out.print(root+" ");
         visited.add(root);
         for (Node node: adjacencyList.get(root)) {
             if (!visited.contains(node))
@@ -107,7 +106,7 @@ public class DirectedGraph {
 
     }
 
-    public void bfsIter (String root) {
+    public void bfs (String root) {
         Node node = nodes.get(root);
         if (node == null) return;
         Queue<Node> queue = new ArrayDeque<>();
@@ -131,12 +130,15 @@ public class DirectedGraph {
     public ArrayList<String> topologicalSort () {
         Set <Node> visited = new HashSet<>();
         Stack <Node> stack = new Stack<>();
+        
         for (Node node: nodes.values())
             topologicalSort(node, visited, stack);
-        ArrayList<String> list = new ArrayList<>();
+        
+            ArrayList<String> list = new ArrayList<>();
         while (!stack.isEmpty()) {
             list.add(stack.pop().label);
         }
+        
         return list;
     }
 
@@ -178,6 +180,10 @@ public class DirectedGraph {
         visited.add(node);
 
         return false;
+    }
+
+    public static void main(String[] args) {
+        
     }
 
 }

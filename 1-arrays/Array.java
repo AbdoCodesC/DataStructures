@@ -17,15 +17,20 @@ class Array {
         this.arr = new int [size];
     }
 
+    @Override
+    public String toString(){
+        return Arrays.toString(Arrays.copyOfRange(arr, 0, count));
+    }
+
     private void grow(){
         int [] newArr = new int[count*2];
         for (int i = 0; i < count; i++) {
             newArr[i] = arr[i];
         }
         arr = newArr;
-        System.out.println("Grew the array!");
+        System.out.println("array doubled.");
     }
-
+    /// /////////////////////////////////////
     public void insertBegin (int value) {
         if (count == arr.length) {
             grow();
@@ -37,7 +42,7 @@ class Array {
         count++;
     }
 
-    public void insertEnd (int value) {
+    public void insertEnd (int value) { // default arr
         if (count == arr.length) {
             grow();
         }
@@ -59,14 +64,13 @@ class Array {
             insertEnd(value);
             return;
         }
-        // count -> 4 //
         for (int i = arr.length-2; i >= index; i--) {
             arr[i+1] = arr[i];
         }
         arr[index] = value;
         count++;
     }
-
+    /// /////////////////////////////////////
     public void removeFirst(){
         for (int i = 0; i < arr.length-1; i++) {
             arr[i] = arr[i+1];
@@ -82,23 +86,31 @@ class Array {
         if (index < 0 || index > arr.length) {
             throw new IndexOutOfBoundsException();
         }
-        // 1 2 3 4
+
+        if (index == 0) {removeFirst();return;}
+        if (index == count) {removeEnd();return;}
+
         for (int i = index; i < arr.length-1; i++) {
             arr[i] = arr[i+1];
         }
         count--;
     }
-
-    public String display () {
-        return Arrays.toString(Arrays.copyOfRange(arr, 0, count));
-    }
-
-    public int search(int value) {
+    //////////////////////////////////////////////////
+    public int indexOf(int value) {
         for (int i = 0; i < count; i++) {
             if (value == arr[i]) {
                 return i;
             }
         }
         return -1;
+    }
+
+    public static void main(String[] args) {
+        Array arr = new Array(5);
+        arr.insertBegin(1);
+        arr.insertBegin(2);
+        arr.insertBegin(3);
+        arr.remove(1);
+        System.out.println(arr);
     }
 }

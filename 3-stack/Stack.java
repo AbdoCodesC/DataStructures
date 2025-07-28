@@ -8,8 +8,9 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class Stack {
-    private final int[] stack ;
+    private final int [] stack ;
     private int count = 0;
+
     public Stack (int size) {
         this.stack = new int [size];
     }
@@ -35,15 +36,6 @@ public class Stack {
         return stack[count-1];
     }
 
-//    public int search (int data) {
-//        for (int i = 0; i < count; i++) {
-//            if (data == stack[i]) {
-//                return i;
-//            }
-//        }
-//        return -1;
-//    }
-
     @Override
     public String toString(){
         return Arrays.toString(Arrays.copyOfRange(stack, 0, count));
@@ -51,5 +43,10 @@ public class Stack {
 
     public boolean isEmpty(){
         return count == 0;
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack(10);
+
     }
 }

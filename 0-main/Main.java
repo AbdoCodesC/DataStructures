@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
 class Main {
     public static void main(String[] args) throws Exception {
 //        Array arr = new Array(5);
@@ -192,22 +195,79 @@ class Main {
 //        trie.insert("careful");
 //        System.out.println(trie.findWords(null));
 ////        trie.preOrder();
-        DirectedGraph g = new DirectedGraph();
-        g.addNode("A");
-        g.addNode("B");
-        g.addNode("C");
-
-        g.addEdge("A", "B");
-        g.addEdge("B", "C");
-        g.addEdge("C", "A");
-//        g.addEdge("A", "P");
-        System.out.println(g.hasCycle());
+//        DirectedGraph g = new DirectedGraph();
+//        g.addNode("A");
+//        g.addNode("B");
+//        g.addNode("C");
+//
+//        g.addEdge("A", "B");
+//        g.addEdge("B", "C");
+//        g.addEdge("C", "A");
+////        g.addEdge("A", "P");
+//        System.out.println(g.hasCycle());
 //        g.dfs("Z");
 //        g.dfsIter("A");
 //        System.out.println();
 //        g.bfsIter("D");
+//        System.out.println(Arrays.toString(twoSum(new int []{3,2,4}, 6)));
+//        System.out.println("sort".);
+
+        System.out.println(Arrays.toString(topKFrequent(new int [] {4,1,-1,2,-1,2,3}, 2)));
+
+    }
+//    public static int[] twoSum(int[] nums, int target) {
+//        for (int i = 0; i < nums.length; i++) {
+//            for (int n = 1; n < nums.length; n++) {
+//                System.out.println(nums[i]+" "+nums[n]);
+//                if (nums[i] + nums[n] == target) {
+//                    return new int []{i, n};
+//                }
+//            }
+//        }
+//        return new int[]{};
+//    }
 
 
+    public static int[] twoSum(int[] nums, int target) {
+        HashMap <Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int diff = target - nums[i];
+            if (map.containsKey(diff)) {
+                return new int [] {map.get(diff), i};
+            }
+            map.put(nums[i], i);
+        }
+
+        // O(n^2) BRUTE FORCE
+        // for (int i = 0; i < nums.length; i++) {
+        //     for (int n = 1; n < nums.length; n++) {
+        //         if (nums[i] + nums[n] == target) {
+        //             return new int []{i, n};
+        //         }
+        //     }
+        // }
+        return new int[]{};
+    }
+
+    public static int []  topKFrequent(int[] nums, int k) {
+        HashMap <Integer, Integer> map = new HashMap<>();
+        int [] arr = new int [k];
+        for (int n: nums) {
+            if (!map.containsKey(n)) {
+                map.put(n, 1);
+                continue;
+            }
+            map.put(n, map.get(n)+1);
+        }
+        System.out.println(map.values());
+        int i = 0;
+        for (int n: map.keySet()) {
+            if (k == 0) break;
+            arr[i++] = n;
+            k--;
+        }
+        return arr;
     }
 
 }

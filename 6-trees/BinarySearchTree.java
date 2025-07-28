@@ -6,6 +6,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BinarySearchTree {
     private class Node {
@@ -20,6 +21,7 @@ public class BinarySearchTree {
             return "Node="+this.data;
         }
     }
+    
     private Node root;
 
     public void insert (int data) {
@@ -28,6 +30,7 @@ public class BinarySearchTree {
             root = node;
             return;
         }
+        
         Node curr = root;
         while (true) {
             if (data < curr.data) {
@@ -78,7 +81,37 @@ public class BinarySearchTree {
         return root;
     }
 
-    private int minValue(Node root) {
+    public List<Integer> leafSeq(){
+        return leafSeq(root);
+    }
+
+     // Function to collect leaf values from left to right
+    private List<Integer> leafSeq(Node root) {
+        List<Integer> result = new ArrayList<>();
+        
+        // Base case: empty tree
+        if (root == null) {
+            return result;
+        }
+        
+        // Base case: if node is a leaf (no children)
+        if (root.left == null && root.right == null) {
+            result.add(root.data);
+            return result;
+        }
+        
+        // Recursive calls to get leaves from left and right subtrees
+        List<Integer> leftLeaves = leafSeq(root.left);
+        List<Integer> rightLeaves = leafSeq(root.right);
+        
+        // Combine the results
+        result.addAll(leftLeaves);
+        result.addAll(rightLeaves);
+        
+        return result;
+    }
+
+    private int minValue (Node root) {
         int min = root.data;
         while (root.left != null) {
             min = root.left.data;
@@ -220,4 +253,29 @@ public class BinarySearchTree {
         }
         return list;
     }
+
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert(50);         // Root node
+        tree.insert(30);         // Left subtree
+        tree.insert(70);         // Right subtree
+        tree.insert(20);         // Left's left
+        tree.insert(40);         // Left's right
+        tree.insert(60);         // Right's left
+        tree.insert(80);         // Right's right
+        tree.insert(15);         // Deeper nodes
+        tree.insert(25);
+        tree.insert(35);
+        tree.insert(45);
+        tree.insert(55);
+        tree.insert(65);
+        tree.insert(75);
+        tree.insert(85);
+
+
+        System.out.println(tree.leafSeq());
+    }
 }
+
+
+

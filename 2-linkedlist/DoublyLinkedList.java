@@ -11,7 +11,7 @@ public class DoublyLinkedList {
     private int count;
     private Node head;
     private Node tail;
-    private class Node {
+    private static class Node {
         Node next;
         Node prev;
         int data;
@@ -26,18 +26,19 @@ public class DoublyLinkedList {
             this.next = next;
         }
     }
-
+    /////////////--insert--///////////
     public void insertStart (int data) {
         Node node = new Node(data);
         if (head == null) {
             head = tail = node;
-            count++;
-            return;
+        } else {
+            node.next = head;
+            node.prev = null;
+            assert head.prev != null;
+            head.prev = node;
+            head = node;
         }
-        node.next = head;
-        node.prev = null;
-        head.prev = node;
-        head = node;
+
         count++;
     }
 
@@ -47,6 +48,13 @@ public class DoublyLinkedList {
             insertStart(data);
             return;
         }
+        /* w/ out tail
+        Node last = head;
+        while (last.next != null) last = last.next;
+        node.next = null;
+        last.next = node;
+        node.prev = last;
+        */
         tail.next = node;
         node.prev = tail;
         node.next = null;
@@ -68,13 +76,16 @@ public class DoublyLinkedList {
         for (int i = 1; i < index; i++) {
             curr = curr.next;
         }
-        // BOTH WAYS WORK!
-//        Node node = new Node(data);
-//        node.next = curr.next;
-//        node.prev = curr;
-        Node node = new Node(curr, data, curr.next);
+        Node node = new Node(data);
+        node.next = curr.next;
+        node.prev = curr;
         curr.next.prev = node;
         curr.next = node;
+
+        // BOTH WAYS WORK!
+//        Node node = new Node(curr, data, curr.next);
+//        curr.next.prev = node;
+//        curr.next = node;
         count++;
     }
 
@@ -85,28 +96,26 @@ public class DoublyLinkedList {
         if (i == 1) {
             Node curr = head;
             while (curr != null) {
-                System.out.print(curr.data+">");
+                System.out.print(curr.data+" > ");
                 curr = curr.next;
             }
         } else {
             Node curr = tail;
             while (curr != null) {
-                System.out.print(curr.data+"<");
+                System.out.print(curr.data+" < ");
                 curr = curr.prev;
             }
         }
-        System.out.println("NULL");
     }
-
+    //////////--remove--//////////////
     public void removeStart(){
         if (head == null) throw new NoSuchElementException();
         if (head == tail) {
             head = tail = null;
-            count--;
-            return;
+        } else {
+            head = head.next;
+            head.prev = null;
         }
-        head = head.next;
-        head.prev = null;
         count--;
     }
 
@@ -137,7 +146,7 @@ public class DoublyLinkedList {
         curr.next = curr.next.next;
         count--;
     }
-
+    /// /////////////////////
     public int search (int data) {
         int i = 0;
         Node curr = head;
@@ -149,6 +158,17 @@ public class DoublyLinkedList {
             curr = curr.next;
         }
         return -1;
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList ll = new DoublyLinkedList();
+        ll.insertStart(10);
+        ll.insertStart(1);
+        ll.insertStart(1100);
+        ll.insertAt(2, 99);
+        ll.insertEnd(87);
+        ll.print();
+
     }
 
 

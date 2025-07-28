@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class ArrayDeque {
-    private int [] queue;
+    private final int [] queue;
     private int FRONT = 0;
     private int REAR = 0;
     private int count = 0;

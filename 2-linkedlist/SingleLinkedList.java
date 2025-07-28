@@ -5,7 +5,7 @@
 
     node(head) -> node -> node -> node(tail) -> null
          v          v       v         v
- */
+*/
 
 import java.util.NoSuchElementException;
 
@@ -18,7 +18,7 @@ public class SingleLinkedList {
         this.count = 0;
     }
 
-    private class Node {
+    private static class Node {
         Node next;
         int data;
         public Node (int data) {
@@ -31,21 +31,41 @@ public class SingleLinkedList {
         }
     }
 
-    public void insertStart (int data) {
+    public int getSize(){
+        return count;
+    }
+
+    public void insertFirst (int data) {
         Node node = new Node(data);
-        if (head == null) {
-            head = tail = node;
-            count++;
-            return;
-        }
         node.next = head;
         head = node;
+        
+        if (tail == null) {
+           tail = node;
+        }
+        
         count++;
     }
 
-    public void insertEnd (int data) {
+    // do not use: func insertLast will override
+    public void insertLastWNoTail (int data) {
         if (head == null) {
-            insertStart(data);
+            insertFirst(data);
+            return;
+        }
+        Node node = new Node(data);
+        Node curr = head;
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        curr.next = node;
+        System.out.println(curr.data);
+        count++;
+    }
+
+    public void insertLast (int data) {
+        if (head == null) {
+            insertFirst(data);
             return;
         }
         Node node = new Node(data);
@@ -54,18 +74,19 @@ public class SingleLinkedList {
         count++;
     }
 
-    public void insertAt (int index, int data) {
+    public void insert (int index, int data) {
         if (index < 0 || index > count) throw new IndexOutOfBoundsException();
         if (index == 0) {
-            insertStart(data);
+            insertFirst(data);
             return;
         }
         if (index == count) {
-            insertEnd(data);
+            insertLast(data);
             return;
         }
+
         Node curr = head;
-        for (int i = 1; i < index; i++) {
+        for (int i = 1; i < index; i++) { // we use 1 since we alr have curr as head!
             curr = curr.next;
         }
         // BOTH WAYS WORK
@@ -75,61 +96,58 @@ public class SingleLinkedList {
         curr.next = new Node(data, curr.next);
         count++;
     }
-
+    /// /////////////////////////////////////////////////////////
     public void print(){
         Node curr = head;
         while (curr != null) {
-            System.out.print(curr.data+">");
+            System.out.print(curr.data+" > ");
             curr = curr.next;
         }
         System.out.println("NULL");
     }
+    /// /////////////////////////////////////////////////////////
+    public void removeFirst () {
+        if (head == null) throw new NoSuchElementException();
 
-    public void removeStart () {
-        if (head == null) {
-            throw new NoSuchElementException();
-        }
-        if (head == tail) {
-            head = tail = null;
-            count--;
-            return;
-        }
-        head = head.next;
+        if (head == tail) head = tail = null;
+        else head = head.next;
+
         count--;
     }
 
-    public void removeEnd(){
+    public void removeLast(){
         if (head == null || head == tail) {
-            removeStart();
+            removeFirst();
             return;
         }
-        Node curr = head;
-        while (curr.next != tail) {
-           curr = curr.next;
-        }
-        curr.next = null;
-        tail = curr;
+
+//        Node curr = head;
+//        while (curr.next != tail) curr = curr.next;
+        tail = get(count-2); // -2 to get the one before the last node
+        tail.next = null;
         count--;
     }
 
     public void removeAt(int index) {
         if (index < 0 || index > count) throw new IndexOutOfBoundsException();
         if (index == 0) {
-          removeStart();
+          removeFirst();
           return;
         }
         if (index == count) {
-            removeEnd();
+            removeLast();
             return;
         }
-        Node curr = head;
-        for (int i = 1; i < index; i++) {
-            curr = curr.next;
-        }
-        curr.next = curr.next.next;
+//        Node curr = head;
+//        for (int i = 1; i < index; i++) {
+//            curr = curr.next;
+//        }
+        Node del = get(index-1);
+        del.next = del.next.next;
+
         count--;
     }
-
+    /// ///////////////////////////////////////////////////////////////////
     public int search (int data) {
         int i = 0;
         Node curr = head;
@@ -141,5 +159,25 @@ public class SingleLinkedList {
             curr = curr.next;
         }
         return -1;
+    }
+
+    private Node get (int index) {
+        Node curr = head;
+        for (int i = 0; i < index; i++) curr = curr.next;
+        return curr;
+    }
+
+    public static void main(String[] args) {
+        SingleLinkedList list = new SingleLinkedList();
+        list.insertFirst(1);
+        list.insertFirst(2);
+        list.insertFirst(6);
+        list.insert(1, 100);
+        list.insertLast(10);
+        list.insertLast(18);
+        list.print();
+        list.removeAt(4);
+        list.print();
+
     }
 }
